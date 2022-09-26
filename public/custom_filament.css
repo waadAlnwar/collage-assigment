@@ -1,0 +1,45 @@
+html {
+    --x-sidebar-color: #324564;
+    --x-border-color: #454f61;
+    --x-group-color: #52aabd;
+}
+
+body { background: #e6f1f14d !important }
+
+.filament-brand {
+    color: #fff !important;
+}
+.filament-main-topbar {
+    background: #e1e5e5 !important;
+}
+.filament-sidebar {
+    background-color: var(--x-sidebar-color)  !important;
+}
+
+.filament-sidebar .border-t {
+    border-color: var(--x-border-color) !important
+}
+
+.filament-sidebar-item a {
+    color: #fff !important;
+}
+
+.filament-sidebar-header {
+    border-bottom: 1px solid var(--x-border-color) !important;
+}
+
+.filament-sidebar-group p {
+    color: var(--x-group-color) !important;
+}
+
+@media print {
+.web-only { display: none;}
+body * {visibility: hidden}
+  .print-this, .print-this * {visibility: visible}
+  .print-this {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+}

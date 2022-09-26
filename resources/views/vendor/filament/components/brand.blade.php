@@ -1,0 +1,1 @@
+<img src="{{ asset('static/admin_icon.png') }}" style="height: 50px" alt="Admin">
