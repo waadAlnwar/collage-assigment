@@ -13,16 +13,13 @@
             font-family: tahoma
         }
     </style>
-    @livewireStyles
+
 </head>
 
-<body dir="rtl">
+<body>
     <div>
-        {{ $slot }}
+        @yield('content')
     </div>
-
-    @livewireScripts
-    @stack('scripts')
 </body>
 
 </html>

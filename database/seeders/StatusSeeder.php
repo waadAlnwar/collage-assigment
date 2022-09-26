@@ -16,6 +16,7 @@ class StatusSeeder extends Seeder
     public function run()
     {
         Status::create(['name' => 'pending', 'label' => 'قيد التنفيذ']);
+        Status::create(['name' => 'paid', 'label' => 'مدفوع']);
         Status::create(['name' => 'processing', 'label' => 'قيد المعالجة']);
         Status::create(['name' => 'completed', 'label' => 'اكتمل']);
         Status::create(['name' => 'faild', 'label' => 'فشل']);
