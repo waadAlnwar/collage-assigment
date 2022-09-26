@@ -4,35 +4,30 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Major;
+use App\Models\Status;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
-use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\MajorResource\Pages;
+use App\Filament\Resources\StatusResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\MajorResource\RelationManagers;
+use App\Filament\Resources\StatusResource\RelationManagers;
 
-class MajorResource extends Resource
+class StatusResource extends Resource
 {
-    protected static ?string $model = Major::class;
+    protected static ?string $model = Status::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-
-    protected static ?string $label = "التخصص";
-    protected static ?string $pluralLabel = "التخصصات";
-    protected static ?string $navigationLabel = "التخصصات";
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('اسم التخصص')->required()->maxLength(249),
-                Select::make('facutly_id')->label('القسم')
-                    ->relationship('facutly', 'name')
+                TextInput::make('name')->label('الاسم')->required()->maxLength(249),
+                TextInput::make('label')->label('الحالة')->required()->maxLength(249),
+                TextInput::make('decription')->label('الرسالة')->required()
             ]);
     }
 
@@ -40,8 +35,8 @@ class MajorResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label(' التخصص')->searchable(),
-                TextColumn::make('facutly.name')->label('القسم')->searchable(),
+                TextColumn::make('name')->label(' الاسم'),
+                TextColumn::make('label')->label(' الحالة'),
             ])
             ->filters([
                 //
@@ -64,9 +59,9 @@ class MajorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMajors::route('/'),
-            'create' => Pages\CreateMajor::route('/create'),
-            'edit' => Pages\EditMajor::route('/{record}/edit'),
+            'index' => Pages\ListStatuses::route('/'),
+            'create' => Pages\CreateStatus::route('/create'),
+            'edit' => Pages\EditStatus::route('/{record}/edit'),
         ];
     }
 }

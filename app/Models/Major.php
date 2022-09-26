@@ -12,6 +12,6 @@ class Major extends Model
 
     public function facutly()
     {
-        return $this->hasMany(Facutly::class);
+        return $this->belongsTo(Facutly::class);
     }
 }

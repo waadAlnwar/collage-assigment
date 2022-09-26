@@ -2,16 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\FacutlyResource\Pages;
-use App\Filament\Resources\FacutlyResource\RelationManagers;
-use App\Models\Facutly;
 use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
+use App\Models\Facutly;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\FacutlyResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\FacutlyResource\RelationManagers;
 
 class FacutlyResource extends Resource
 {
@@ -19,11 +21,15 @@ class FacutlyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $label = "القسم";
+    protected static ?string $pluralLabel = "الاقسام";
+    protected static ?string $navigationLabel = "الاقسام";
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')->label('اسم القسم')->required()->maxLength(249)
             ]);
     }
 
@@ -31,7 +37,7 @@ class FacutlyResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->label('اسم القسم')->searchable(),
             ])
             ->filters([
                 //
@@ -43,14 +49,14 @@ class FacutlyResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +64,5 @@ class FacutlyResource extends Resource
             'create' => Pages\CreateFacutly::route('/create'),
             'edit' => Pages\EditFacutly::route('/{record}/edit'),
         ];
-    }    
+    }
 }
