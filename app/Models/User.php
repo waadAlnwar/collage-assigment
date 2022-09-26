@@ -33,5 +33,4 @@ class User extends Authenticatable implements FilamentUser, HasName
     {
         return $this->first_name . " " . $this->last_name;
     }
-
 }

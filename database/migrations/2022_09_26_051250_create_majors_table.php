@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('majors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('facutly_id')->nullable()->constrained("facutlies")->cascadeOnUpdate()->nullOnDelete();
+            $table->string('name');
             $table->timestamps();
         });
     }
