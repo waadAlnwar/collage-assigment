@@ -10,6 +10,21 @@ class certificate extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public static function boot()
+    {
+        parent::boot();
+        static::created(function (certificate $certificate) {
+            $certificate->refreance_number = 1000 + $certificate->id;
+            $certificate->status_id = 1;
+            $certificate->save();
+        });
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->second_name . ' ' . $this->third_name . ' ' . $this->fourth_name;
+    }
+
     public function facutly()
     {
         return $this->belongsTo(Facutly::class);

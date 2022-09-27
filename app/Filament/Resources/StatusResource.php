@@ -21,13 +21,17 @@ class StatusResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $label = "الحالة";
+    protected static ?string $pluralLabel = "الحالات";
+    protected static ?string $navigationLabel = "الحالات";
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('الاسم')->required()->maxLength(249),
+                TextInput::make('name')->label('الاسم')->required()->maxLength(249)->disabled(),
                 TextInput::make('label')->label('الحالة')->required()->maxLength(249),
-                TextInput::make('decription')->label('الرسالة')->required()
+                TextInput::make('description')->label('الرسالة')->required()
             ]);
     }
 
@@ -60,7 +64,7 @@ class StatusResource extends Resource
     {
         return [
             'index' => Pages\ListStatuses::route('/'),
-            'create' => Pages\CreateStatus::route('/create'),
+            // 'create' => Pages\CreateStatus::route('/create'),
             'edit' => Pages\EditStatus::route('/{record}/edit'),
         ];
     }

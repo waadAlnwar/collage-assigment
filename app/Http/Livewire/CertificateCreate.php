@@ -56,7 +56,7 @@ class CertificateCreate extends Component
 
         $img = $this->attach->store('attachs');
 
-        certificate::create([
+        $certificate = certificate::create([
             'first_name' => $this->first_name,
             'second_name' => $this->second_name,
             'third_name' => $this->third_name,
@@ -74,7 +74,7 @@ class CertificateCreate extends Component
             'attachment' => $img,
         ]);
 
-        redirect()->route('track');
+        redirect()->route('pay', $certificate->refreance_number);
     }
 
 

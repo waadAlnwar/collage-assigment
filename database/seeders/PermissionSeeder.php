@@ -18,5 +18,8 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'users_list', 'label' => 'Users list']);
         Permission::create(['name' => 'users_update', 'label' => 'Users update']);
         Permission::create(['name' => 'users_delete', 'label' => 'Users delete']);
+
+        // certificates
+        Permission::create(['name' => 'certificate_list', 'label' => 'certificate list']);
     }
 }
